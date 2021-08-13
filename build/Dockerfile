@@ -1,4 +1,4 @@
-FROM maven:3.6.3-openjdk as javabuilder
+FROM maven:3.8.1-openjdk as javabuilder
 
 RUN mkdir /opt/jmx_exporter
 COPY pom.xml /opt/jmx_exporter
