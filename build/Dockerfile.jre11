@@ -4,7 +4,7 @@ USER root
 
 RUN dnf update -y && dnf install -y java-11-openjdk-headless.x86_64 && dnf clean all
 
-FROM maven:3.6.3-openjdk as javabuilder
+FROM maven:3.8.3-openjdk as javabuilder
 
 RUN mkdir /opt/jmx_exporter
 COPY pom.xml /opt/jmx_exporter
