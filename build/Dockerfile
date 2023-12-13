@@ -17,7 +17,7 @@ RUN chmod +x /opt/jmx_exporter/start.sh
 
 CMD ["/opt/jmx_exporter/start.sh"]
 
-FROM quay.io/sysdig/sysdig-mini-ubi:1.5.8 as ubi
+FROM quay.io/sysdig/sysdig-mini-ubi9:1.2.0 as ubi
 
 RUN microdnf --assumeyes --disableplugin=subscription-manager --nodocs update && \
     microdnf --assumeyes --disableplugin=subscription-manager --nodocs install curl java-1.8.0-openjdk && \
