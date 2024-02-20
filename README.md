@@ -2,9 +2,11 @@
   <img src="https://circleci.com/gh/prometheus/jmx_exporter.svg?style=shield"/>
 </picture>
 
+
+Sysdig CI/CD Pipeline in the [Prometheus Integrations repo](https://github.com/draios/prometheus-integrations/blob/main/build/Jenkinsfile).
+
 JMX Exporter
 =====
-
 
 JMX to Prometheus exporter: a collector that can configurable scrape and
 expose mBeans of a JMX target.

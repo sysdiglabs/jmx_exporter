@@ -8,7 +8,7 @@ FROM anapsix/alpine-java:9 as scratch
 
 RUN apk update && apk upgrade && apk --update add curl && rm -rf /tmp/* /var/cache/apk/*
 
-ENV VERSION 0.20.1
+ENV VERSION 1.0.0
 ENV JAR jmx_prometheus_httpserver-$VERSION.jar
 COPY --from=javabuilder /opt/jmx_exporter/jmx_prometheus_httpserver/target/jmx_prometheus_httpserver-$VERSION-SNAPSHOT.jar /opt/jmx_exporter/$JAR
 COPY build/start.sh /opt/jmx_exporter
@@ -17,7 +17,7 @@ RUN chmod +x /opt/jmx_exporter/start.sh
 
 CMD ["/opt/jmx_exporter/start.sh"]
 
-FROM quay.io/sysdig/sysdig-mini-ubi9:1.2.0 as ubi
+FROM quay.io/sysdig/sysdig-mini-ubi9:1.2.5 as ubi
 
 RUN microdnf --assumeyes --disableplugin=subscription-manager --nodocs update && \
     microdnf --assumeyes --disableplugin=subscription-manager --nodocs install java-1.8.0-openjdk && \
@@ -25,7 +25,7 @@ RUN microdnf --assumeyes --disableplugin=subscription-manager --nodocs update &&
     rm -rf /usr/lib/python3.6 && \
     rm -rf /var/cache/yum
 
-ENV VERSION 0.20.1
+ENV VERSION 1.0.0
 ENV JAR jmx_prometheus_httpserver-$VERSION.jar
 
 COPY --from=javabuilder /opt/jmx_exporter/jmx_prometheus_httpserver/target/jmx_prometheus_httpserver-$VERSION-SNAPSHOT.jar /opt/jmx_exporter/$JAR
