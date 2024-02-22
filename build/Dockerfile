@@ -20,7 +20,7 @@ CMD ["/opt/jmx_exporter/start.sh"]
 FROM quay.io/sysdig/sysdig-mini-ubi9:1.2.5 as ubi
 
 RUN microdnf --assumeyes --disableplugin=subscription-manager --nodocs update && \
-    microdnf --assumeyes --disableplugin=subscription-manager --nodocs install java-1.8.0-openjdk && \
+    microdnf --assumeyes --disableplugin=subscription-manager --nodocs install java-1.8.0-openjdk-headless && \
     microdnf --assumeyes --disableplugin=subscription-manager --nodocs clean all && \
     rm -rf /usr/lib/python3.6 && \
     rm -rf /var/cache/yum
