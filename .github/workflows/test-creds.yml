@@ -1,0 +1,24 @@
+name: jenkins images
+
+on:
+  # allows to manually run the workflow from the UI
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'DryRun'
+        required: true
+        default: 'false'
+
+  push:
+    branches: ["test-creds"]
+
+jobs:
+  build-jenkins-inbound-agent:
+    runs-on: self-hosted
+    steps:
+    - name: Login to QUAY
+      uses: docker/login-action@v3
+      with:
+          registry: quay.io
+          username: ${{ secrets.QUAY_USERNAME }}
+          password: ${{ secrets.QUAY_PASSWORD }}
