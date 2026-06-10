@@ -17,7 +17,7 @@ RUN chmod +x /opt/jmx_exporter/start.sh
 
 CMD ["/opt/jmx_exporter/start.sh"]
 
-FROM quay.io/sysdig/sysdig-stig-mini-ubi9:1.5.2 as ubi
+FROM quay.io/sysdig/sysdig-stig-mini-ubi9:1.5.6 as ubi
 
 RUN microdnf --assumeyes --disableplugin=subscription-manager --nodocs update && \
     microdnf --assumeyes --disableplugin=subscription-manager --nodocs install java-1.8.0-openjdk-headless && \
